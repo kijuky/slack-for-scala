@@ -1,0 +1,2 @@
+# slack-for-scala
+
