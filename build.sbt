@@ -4,7 +4,6 @@ lazy val root = project
     name := "slack-for-scala",
     scalaVersion := "2.12.20",
     crossScalaVersions := Seq(scalaVersion.value, "3.3.4"),
-    resolvers += "Atlassian Public" at "https://maven.atlassian.com/content/repositories/atlassian-public/",
     libraryDependencies ++= Seq("com.slack.api" % "slack-api-client" % "1.40.3")
   )
 
