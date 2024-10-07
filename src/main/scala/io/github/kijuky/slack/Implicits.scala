@@ -19,17 +19,20 @@ object Implicits {
   private lazy val gson = gsonBuilder.create()
   private lazy val prettyGson = gsonBuilder.setPrettyPrinting().create()
 
-  implicit class RichSlack(slack: Slack) {
-    def send(optWebhookUrl: Option[String], payload: Payload): Unit = {
+  def createSlackClient(webhookUrl: Option[String]): SlackClient =
+    new SlackClient(webhookUrl.getOrElse(""), Slack.getInstance())
+
+  class SlackClient(webhookUrl: String, slack: Slack) {
+    def send(payload: Payload): Unit = {
       val payloadWithLinkNames = payload.withLinkNames
-      optWebhookUrl match {
+      webhookUrl match {
         // for debug
-        case None =>
+        case url if url.isEmpty =>
           val payloadJson = prettyGson.toJson(payloadWithLinkNames)
           println(payloadJson)
-        case Some(webhookUrl) =>
+        case url =>
           val payloadJson = gson.toJson(payloadWithLinkNames)
-          val response = slack.send(webhookUrl, payloadJson)
+          val response = slack.send(url, payloadJson)
           if (response.getCode != 200) {
             throw new IOException(response.getMessage)
           }
