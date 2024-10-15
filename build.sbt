@@ -4,7 +4,7 @@ lazy val root = project
     name := "slack-for-scala",
     scalaVersion := "2.12.20",
     crossScalaVersions := Seq(scalaVersion.value, "3.3.4"),
-    libraryDependencies ++= Seq("com.slack.api" % "slack-api-client" % "1.40.3")
+    libraryDependencies ++= Seq("com.slack.api" % "slack-api-client" % "1.43.1")
   )
 
 inThisBuild(
