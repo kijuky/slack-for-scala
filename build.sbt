@@ -1,10 +1,27 @@
+val slackDependencies = Seq("com.slack.api" % "slack-api-client" % "1.43.1")
+
 lazy val root = project
   .in(file("."))
+  .aggregate(vanilla, zio)
+  .settings(publish / skip := true)
+
+lazy val vanilla = project
+  .in(file("vanilla"))
   .settings(
     name := "slack-for-scala",
-    scalaVersion := "2.12.20",
+    scalaVersion := "2.12.20", // scala-steward:off
     crossScalaVersions := Seq(scalaVersion.value, "3.3.4"),
-    libraryDependencies ++= Seq("com.slack.api" % "slack-api-client" % "1.43.1")
+    libraryDependencies ++= slackDependencies
+  )
+
+lazy val zio = project
+  .in(file("zio"))
+  .settings(
+    name := "slack-for-zio",
+    scalaVersion := "3.3.4",
+    libraryDependencies ++= slackDependencies ++
+      Seq("dev.zio" %% "zio" % "2.1.6")
+>>>>>>> afe4aa8 (add zio support)
   )
 
 inThisBuild(
