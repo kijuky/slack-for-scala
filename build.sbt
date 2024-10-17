@@ -21,7 +21,6 @@ lazy val zio = project
     scalaVersion := "3.3.4",
     libraryDependencies ++= slackDependencies ++
       Seq("dev.zio" %% "zio" % "2.1.6")
->>>>>>> afe4aa8 (add zio support)
   )
 
 inThisBuild(
