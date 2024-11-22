@@ -1,4 +1,4 @@
-val slackDependencies = Seq("com.slack.api" % "slack-api-client" % "1.44.0")
+val slackDependencies = Seq("com.slack.api" % "slack-api-client" % "1.44.2")
 
 lazy val root = project
   .in(file("."))
