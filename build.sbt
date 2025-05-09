@@ -10,7 +10,7 @@ lazy val vanilla = project
   .settings(
     name := "slack-for-scala",
     scalaVersion := "2.12.20", // scala-steward:off
-    crossScalaVersions := Seq(scalaVersion.value, "3.3.4"),
+    crossScalaVersions := Seq(scalaVersion.value, "3.3.6"),
     libraryDependencies ++= slackDependencies
   )
 
@@ -18,7 +18,7 @@ lazy val zio = project
   .in(file("zio"))
   .settings(
     name := "slack-for-zio",
-    scalaVersion := "3.3.4",
+    scalaVersion := "3.3.6",
     libraryDependencies ++= slackDependencies ++
       Seq("dev.zio" %% "zio" % "2.1.11")
   )
