@@ -20,7 +20,7 @@ lazy val zio = project
     name := "slack-for-zio",
     scalaVersion := "3.3.4",
     libraryDependencies ++= slackDependencies ++
-      Seq("dev.zio" %% "zio" % "2.1.11")
+      Seq("dev.zio" %% "zio" % "2.1.20")
   )
 
 inThisBuild(
